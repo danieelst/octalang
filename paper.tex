@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage[a4paper,margin=3cm,top=1cm]{geometry}
+\usepackage{tipa}
+\usepackage[parfill]{parskip}
+\usepackage{float}
+\usepackage{amssymb}
+
+\pagenumbering{gobble}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\newcommand{\octopus}[0]{{\fontspec{Symbola}\symbol{"1F419}}}
+\newcommand{\octalang}[0]{\textsc{Octalang}}
+
+\newcommand{\ipa}[1]{$\langle$\textipa{#1}$\rangle$}
+\newcommand{\letter}[1]{{\setmainfont{Noto Serif}#1}}
+
+% Letters
+\newcommand{\zero}[0]{\letter{ɵ}}
+\newcommand{\one}[0]{\letter{ọ}}
+\newcommand{\two}[0]{\letter{o}}
+\newcommand{\three}[0]{\letter{\^{o}}}
+\newcommand{\four}[0]{\letter{\^{ǫ}}}
+\newcommand{\five}[0]{\letter{\^{ọ}}}
+\newcommand{\six}[0]{\letter{\^{ɵ}}}
+\newcommand{\seven}[0]{\letter{\^{ø}}}
+
+% Brackets
+\newcommand{\lmarker}[0]{\letter{(}}
+\newcommand{\rmarker}[0]{\letter{)}}
+
+% Divider
+\newcommand{\divider}[0]{\letter{/}}
+
+% Compute letter from digit
+\newcommand{\digittoletter}[1]{%
+  \ifcase#1 \zero{}% Case 0
+  \or \one{}% Case 1
+  \or \two{}% Case 2
+  \or \three{}% Case 3
+  \or \four{}% Case 4
+  \or \five{}% Case 5
+  \or \six{}% Case 6
+  \or \seven{}% Case 7
+  \else \letter{?}% Default case
+  \fi
+}
+
+% Compute group from three digit octal value
+\newcommand{\octaltogroup}[3]{\lmarker{}\digittoletter{#1}\digittoletter{#2}\digittoletter{#3}\rmarker{}}
+
+% Terms
+\newcommand{\tvalue}[0]{\textsc{value}}
+\newcommand{\tletter}[0]{\textsc{letter}}
+\newcommand{\tdialect}[0]{\textsc{dialect}}
+\newcommand{\tgroup}[0]{\textsc{group}}
+\newcommand{\tlexeme}[0]{\textsc{lexeme}}
+\newcommand{\tsplit}[0]{\textsc{split}}
+
+\begin{document}
+
+\hfill
+
+\begin{center}
+  \Huge \octalang{}
+
+  \large \octopus{} Specification of a constructed language \octopus{}
+
+  \large Daniel Stribrand
+\end{center}
+
+\hfill
+
+\octalang{} is a constructed language which adopts every other language. It does this by converting a source text's characters' \tvalue{}s\footnote{In accordance to Unicode.} into octal numerals, where each digit corresponds to a \tletter{} in \octalang{}. Thus, \octalang{} inherits the source language's grammar and lexicon. Therefore, every language is considered as a \tdialect{} of \octalang{}. 
+
+\section*{Language}
+
+The alphabet in \octalang{} is an association between the digits in the octal numeral system and the \tletter{}s of \octalang{}.
+
+\begin{table}[H]
+  \centering
+  \large
+  \begin{tabular}{ccc}
+    \textbf{Digit} & \textbf{Letter} & \textbf{IPA} \\
+    \hline
+    0 & \zero{}  & \ipa{u} \\
+    1 & \one{}   & \ipa{o} \\
+    2 & \two{}   & \ipa{\textlowering{o}} \\
+    3 & \three{} & \ipa{O} \\
+    4 & \four{}  & \ipa{6} \\
+    5 & \five{}  & \ipa{A} \\
+    6 & \six{}   & \ipa{\"a} \\
+    7 & \seven{} & \ipa{a}
+  \end{tabular}
+  \caption{\octalang{}'s alphabet}
+\end{table}
+
+\tletter{}s are organized into \tgroup{}s by denoting enclosing brackets, semantically a \tgroup{} corresponds to an octal numeral (and thus a character). A succession of non-separated \tgroup{}s is called a \tlexeme{}.
+
+\tlexeme{}s are separated with \tsplit{}s (\letter{/}).
+
+\section*{Translating to and from {\sffamily\octalang{}}}
+
+The translation to \octalang{} takes the following steps:
+
+\begin{enumerate}
+  \item All non-letters from the source text are replaced with \tsplit{}s.
+  \item Each symbol is converted into its \tvalue{} as an octal numeral.
+  \item The numerals are translated into \octalang{} \tletter{}s and are \tgroup{}ed accordingly.
+  \item Preceding and succeeding \tsplit{}s are removed.
+\end{enumerate} 
+
+The translation from \octalang{} will naturally be the opposite procedure, though it will result in loss of information due to the homogeneous treatment of non-letters. \tsplit{}s are commonly translated to spaces.
+
+\section*{FAQ\protect\footnote{No one has asked me anything.}}
+
+\begin{itemize}
+  \item Is this really a language? Probably not, so do not think too much about it.
+  \item How is this language useful? No idea.
+\end{itemize}
+
+\newpage
+\newgeometry{margin=3cm}
+
+\section*{The English {\sffamily\octalang{}} alphabet}
+
+As an example, we will show the English alphabet as represented in \octalang{}:
+
+\begin{table}[H]
+  \centering
+  \large
+  \begin{tabular}{ccc|ccc}
+    \textbf{Upper} & \textbf{Octal value} & \textbf{{\sffamily\textsc{Group}}} & \textbf{Lower} & \textbf{Octal value} & \textbf{{\sffamily\textsc{Group}}} \\
+    \hline
+    A & 101 & \octaltogroup{1}{0}{1} & a & 141 & \octaltogroup{1}{4}{1} \\
+    B & 102 & \octaltogroup{1}{0}{2} & b & 142 & \octaltogroup{1}{4}{2} \\
+    C & 103 & \octaltogroup{1}{0}{3} & c & 143 & \octaltogroup{1}{4}{3} \\
+    D & 104 & \octaltogroup{1}{0}{4} & d & 144 & \octaltogroup{1}{4}{4} \\
+    E & 105 & \octaltogroup{1}{0}{5} & e & 145 & \octaltogroup{1}{4}{5} \\
+    F & 106 & \octaltogroup{1}{0}{6} & f & 146 & \octaltogroup{1}{4}{6} \\
+    G & 107 & \octaltogroup{1}{0}{7} & g & 147 & \octaltogroup{1}{4}{7} \\
+    H & 110 & \octaltogroup{1}{1}{0} & h & 150 & \octaltogroup{1}{5}{0} \\
+    I & 111 & \octaltogroup{1}{1}{1} & i & 151 & \octaltogroup{1}{5}{1} \\
+    J & 112 & \octaltogroup{1}{1}{2} & j & 152 & \octaltogroup{1}{5}{2} \\
+    K & 113 & \octaltogroup{1}{1}{3} & k & 153 & \octaltogroup{1}{5}{3} \\
+    L & 114 & \octaltogroup{1}{1}{4} & l & 154 & \octaltogroup{1}{5}{4} \\
+    M & 115 & \octaltogroup{1}{1}{5} & m & 155 & \octaltogroup{1}{5}{5} \\
+    N & 116 & \octaltogroup{1}{1}{6} & n & 156 & \octaltogroup{1}{5}{6} \\
+    O & 117 & \octaltogroup{1}{1}{7} & o & 157 & \octaltogroup{1}{5}{7} \\
+    P & 120 & \octaltogroup{1}{2}{0} & p & 160 & \octaltogroup{1}{6}{0} \\
+    Q & 121 & \octaltogroup{1}{2}{1} & q & 161 & \octaltogroup{1}{6}{1} \\
+    R & 122 & \octaltogroup{1}{2}{2} & r & 162 & \octaltogroup{1}{6}{2} \\
+    S & 123 & \octaltogroup{1}{2}{3} & s & 163 & \octaltogroup{1}{6}{3} \\
+    T & 124 & \octaltogroup{1}{2}{4} & t & 164 & \octaltogroup{1}{6}{4} \\
+    U & 125 & \octaltogroup{1}{2}{5} & u & 165 & \octaltogroup{1}{6}{5} \\
+    V & 126 & \octaltogroup{1}{2}{6} & v & 166 & \octaltogroup{1}{6}{6} \\
+    W & 127 & \octaltogroup{1}{2}{7} & w & 167 & \octaltogroup{1}{6}{7} \\
+    X & 130 & \octaltogroup{1}{3}{0} & x & 170 & \octaltogroup{1}{7}{0} \\
+    Y & 131 & \octaltogroup{1}{3}{1} & y & 171 & \octaltogroup{1}{7}{1} \\
+    Z & 132 & \octaltogroup{1}{3}{2} & z & 172 & \octaltogroup{1}{7}{2}
+  \end{tabular}
+  \caption{The English alphabet in \octalang{}.}
+\end{table}
+
+\subsection*{{\sffamily\textsc{Hello World}}, as is tradition}
+
+Naturally, we will round off this specification with a traditional \textbf{\sffamily\textsc{Hello World}} example:
+
+\hfill
+
+\begin{center}
+  \Large
+  % Hello World
+  \octaltogroup{1}{1}{0}\octaltogroup{1}{4}{5}\octaltogroup{1}{5}{4}\octaltogroup{1}{5}{4}\octaltogroup{1}{5}{7}\divider{}\octaltogroup{1}{2}{7}\octaltogroup{1}{5}{7}\octaltogroup{1}{6}{2}\octaltogroup{1}{5}{4}\octaltogroup{1}{4}{4}
+\end{center}
+
+\vfill
+
+\begin{center}
+  $\square$
+\end{center}
+
+\end{document}
