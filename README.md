@@ -2,8 +2,9 @@
 
 Octalang is a constructed language which adopts every other language. It does this by converting a source text's characters' values (á la Unicode) into octal numerals, where each digit corresponds to a letter in Octalang. Thus, Octalang inherits the source language's grammar and lexicon. Therefore, every language is considered as a dialect of Octalang.
 
+Wihtout further ado, here is `"Hello World"` in Octalang:
+
 ```
-ᴴᵉˡˡᵒ ᵂᵒʳˡᵈ ᵉˣᵃᵐᵖˡᵉ
 (ọọɵ)(ọǫ̂ộ)(ọộǫ̂)(ọộǫ̂)(ọộø̂)/(ọoø̂)(ọộø̂)(ọɵ̂o)(ọộǫ̂)(ọǫ̂ǫ̂)
 ```
 
