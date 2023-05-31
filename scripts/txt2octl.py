@@ -1,4 +1,5 @@
 import sys
+import re
 
 ALPHABET=['ɵ','ọ','o','ô','ǫ̂','ộ','ɵ̂','ø̂']
 
@@ -14,7 +15,7 @@ def translate_char(c: str):
 
 def translate(text: str):
   text = ''.join([translate_char(c) if c.isalpha() else '/' for c in text])
-  return text.strip('/')
+  return re.sub(r'/+', '/', text).strip('/')
 
 if __name__=='__main__':
   # Gather the input

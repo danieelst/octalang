@@ -15,18 +15,22 @@ The full specification is given in `paper.pdf`.
 Translating to Octalang:
 
 ```
-python3 txt2octl.py <text>
+python3 scripts/txt2octl.py <text>
 ```
 
 Translating from Octalang:
 
 ```
-python3 octl2txt.py <text>
+python3 scripts/octl2txt.py <text>
 ```
 
 The scripts are developed to be completely stand-alone.
 
 PSA: Make sure that you have enabled a font that can properly display the characters (e.g. Consolas).
+
+There are also two scripts for simple echoing:
+  * `echo2octl.sh`: takes Octalang text, translates to natural text, and back to Octalang
+  *  `echo2txt.sh`: takes natural text, translates to Octalng text, and back to natural
 
 ## Documenation
 
