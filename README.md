@@ -29,8 +29,8 @@ The scripts are developed to be completely stand-alone.
 PSA: Make sure that you have enabled a font that can properly display the characters (e.g. Consolas).
 
 There are also two scripts for simple echoing:
-  * `echo2octl.sh`: takes Octalang text, translates to natural text, and back to Octalang
-  *  `echo2txt.sh`: takes natural text, translates to Octalng text, and back to natural
+  * `echo2octl.sh`: takes Octalang text, translates to natural text, and back to Octalang text
+  * `echo2txt.sh`: takes natural text, translates to Octalang text, and back to natural text
 
 ## Documenation
 
