@@ -32,6 +32,6 @@ There are also two scripts for simple echoing:
   * `echo2octl.sh`: takes Octalang text, translates to natural text, and back to Octalang text
   * `echo2txt.sh`: takes natural text, translates to Octalang text, and back to natural text
 
-## Documenation
+## Documentation
 
 `paper.pdf` is generated from `paper.tex` using Overleaf and the XeLaTeX compiler.
