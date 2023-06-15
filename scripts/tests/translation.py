@@ -22,7 +22,7 @@ def gen_natural_text(n_len: int):
   return text
 
 # Generate n strings of natural text: translate each to Octalang and back
-def test_natural_to_natural(n_tests: int):
+def test_gen_natural_to_natural(n_tests: int):
   # The original and the translation should be the same, except for
   # the replacement of non-alphanumerics with whitespace
   def compare(natural, translated):
@@ -38,3 +38,10 @@ def test_natural_to_natural(n_tests: int):
   translated = [translate_from_octalang(translate_to_octalang(text)) for text in texts]
 
   return all([compare(t1,t2) for (t1,t2) in zip(texts,translated)])
+
+def test_natural_to_octalang(input_str: str, expected_str: str):
+  translated = translate_to_octalang(input_str)
+  res = translated == expected_str
+  print(f'> "{input_str}" == "{expected_str}": {res}')
+  return res
+
