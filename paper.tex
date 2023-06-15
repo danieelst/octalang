@@ -72,7 +72,7 @@
 
 \hfill
 
-\octalang{} is a constructed language which adopts every other language. It does this by converting a source text's characters' \tvalue{}s\footnote{In accordance to Unicode.} into octal numerals, where each digit corresponds to a \tletter{} in \octalang{}. Thus, \octalang{} inherits the source language's grammar and lexicon. Therefore, every language is considered as a \tdialect{} of \octalang{}. 
+\octalang{} is a constructed language which adopts every other language. It does this by converting a source text's characters' \tvalue{}s\footnote{In accordance to Unicode.} into octal numerals, where each digit corresponds to a \tletter{} in \octalang{}. Thus, \octalang{} inherits the source language's grammar and lexicon. Therefore, every language can be considered as a \tdialect{} of \octalang{}.
 
 \section*{Language}
 
@@ -105,11 +105,11 @@ The alphabet in \octalang{} is an association between the digits in the octal nu
 The translation to \octalang{} takes the following steps:
 
 \begin{enumerate}
-  \item All non-letters from the source text are replaced with \tsplit{}s.
+  \item All non-alphanumeric characters from the source text are replaced with \tsplit{}s.
   \item Each symbol is converted into its \tvalue{} as an octal numeral.
   \item The numerals are translated into \octalang{} \tletter{}s and are \tgroup{}ed accordingly.
   \item Preceding and succeeding \tsplit{}s are removed, multiple \tsplit{}s in succession are removed.
-\end{enumerate} 
+\end{enumerate}
 
 The translation from \octalang{} will naturally be the opposite procedure, though it will result in loss of information due to the homogeneous treatment of non-letters. \tsplit{}s are commonly translated to spaces.
 

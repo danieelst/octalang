@@ -24,13 +24,11 @@ Translating from Octalang:
 python3 scripts/octl2txt.py <text>
 ```
 
-The scripts are developed to be completely stand-alone.
-
 PSA: Make sure that you have enabled a font that can properly display the characters (e.g. Consolas).
 
 There are also two scripts for simple echoing:
-  * `echo2octl.sh`: takes Octalang text, translates to natural text, and back to Octalang text
-  * `echo2txt.sh`: takes natural text, translates to Octalang text, and back to natural text
+  * `octl2octl.py`: takes Octalang text, translates to natural text, and back to Octalang text
+  * `txt2txt.py`: takes natural text, translates to Octalang text, and back to natural text
 
 ## Documentation
 
