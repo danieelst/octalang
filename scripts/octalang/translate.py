@@ -3,6 +3,8 @@ from util import read_graphemes,is_alphanumeric,remove_successive_graphemes
 
 # Take an Octalang text and translate it into natural text
 def translate_from_octalang(text: str):
+  if text == '':
+    return ''
   chars = read_graphemes(text)
   digitized = ''.join([letter_to_digit(char) for char in chars])
   splits = digitized.split('/')
@@ -12,6 +14,8 @@ def translate_from_octalang(text: str):
 
 # Take a natural text and translate it into Octalang text
 def translate_to_octalang(text: str):
+  if text == '':
+    return ''
   chars = read_graphemes(text)
   text = []
   for char in chars:

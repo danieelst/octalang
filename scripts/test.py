@@ -1,4 +1,6 @@
-from tests.translation import test_gen_natural_to_natural,test_natural_to_octalang
+from tests.translation import (test_all_code_points,
+                               test_gen_natural_to_natural,
+                               test_natural_to_octalang)
 
 def test(res: bool):
   if res:
@@ -7,8 +9,10 @@ def test(res: bool):
     print('Failed!')
 
 if __name__=='__main__':
+  print('-- Testing translation of all code points --')
+  test(test_all_code_points())
   print('-- Testing translation of generated strings --')
-  test(test_gen_natural_to_natural(200))
+  test(test_gen_natural_to_natural(20))
   print('-- Testing translation of strings --')
   test(test_natural_to_octalang('Hello World',
     '(ọọɵ)(ọǫ̂ộ)(ọộǫ̂)(ọộǫ̂)(ọộø̂)/(ọoø̂)(ọộø̂)(ọɵ̂o)(ọộǫ̂)(ọǫ̂ǫ̂)'))
